@@ -1,13 +1,10 @@
 <?php
-/**
- * Admin Logout
- */
+require_once __DIR__ . '/config/config.php';
 
-require_once __DIR__ . '/../config/config.php';
+// Clear customer session
+unset($_SESSION['customer_id']);
+unset($_SESSION['customer_name']);
+// Optionally clear cart
+// unset($_SESSION['cart']);
 
-// clear session and redirect using helper
-$_SESSION = [];
-session_destroy();
-
-redirect(SITE_URL . '/admin/login.php');
-exit;
+redirect('index.php');
